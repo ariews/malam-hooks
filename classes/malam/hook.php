@@ -10,7 +10,7 @@ class Malam_Hook
 {
     public static function init()
     {
-        $hooks = Kohana::config('hooks');
+        $hooks = Kohana::$config->load('hooks');
 
         if (empty($hooks))
             return;
