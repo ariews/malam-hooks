@@ -13,16 +13,20 @@ class Malam_Hook
         $hooks = Kohana::$config->load('hooks');
 
         if (empty($hooks))
+        {
             return;
+        }
 
         foreach ($hooks as $event => $hook)
         {
-            if (! empty($hook))
+            if (empty($hook))
             {
-                foreach ($hook as $h)
-                {
-                    Dispatcher::instance()->register_listener($event, $h);
-                }
+                continue;
+            }
+
+            foreach ($hook as $h)
+            {
+                Dispatcher::instance()->register_listener($event, $h);
             }
         }
     }
